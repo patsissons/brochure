@@ -1,4 +1,6 @@
-:root {
+@import "tailwindcss";
+
+@theme {
   --color-primary: oklch(45% 0.24 277.023);
   --color-primary-content: oklch(93% 0.034 272.788);
   --color-secondary: oklch(65% 0.241 354.308);
@@ -22,7 +24,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  @theme {
     --color-primary: oklch(58% 0.233 277.117);
     --color-primary-content: oklch(96% 0.018 272.314);
     --color-base-100: oklch(25.33% 0.016 252.42);
@@ -35,23 +37,12 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
   background-color: var(--color-base-100);
   color: var(--color-base-content);
-}
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
