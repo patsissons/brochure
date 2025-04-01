@@ -1,9 +1,8 @@
 {
-  "name": "@repo/brochure",
+  "name": "@repo/brochure-html",
   "version": "0.0.0",
   "private": true,
   "exports": {
-    "./components/*": "./src/components/*.tsx",
     "./types": "./src/types/index.ts",
     "./*": "./src/*.ts"
   },
@@ -12,8 +11,6 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
-    "@repo/brochure-html": "workspace:*",
-    "@repo/brochure-lodash": "workspace:*",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "@turbo/gen": "^2.4.4",
@@ -21,9 +18,5 @@
     "@types/react": "19.0.10",
     "eslint": "^9.23.0",
     "typescript": "5.8.2"
-  },
-  "dependencies": {
-    "react": "^19.0.0",
-    "yaml": "^2.7.1"
   }
 }

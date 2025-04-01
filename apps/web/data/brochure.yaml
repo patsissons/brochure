@@ -36,35 +36,37 @@ settings:
 #     base-300: oklch(21.15% .012 254.09)
 #     base-content: oklch(97.807% .029 256.847)
 
-pages:
-  # business:
-  #   config:
-  #     colors:
-  #       base-100: oklch(95% 0 0)
-  #     dark_colors:
-  #       base-100: oklch(21.15% .012 254.09)
-  #   blocks:
-  #     - id: business.header
-  #     - id: <main>
-  #       blocks:
-  #         - id: testing
-  #         - id: <template>
-  #       template: |
-  #         <div>
-  #           <h1>Business</h1>
-  #           <p>This is a business page</p>
-  #           <a href="/brochure/123/456">Location</a>
-  #         </div>
-  #     - id: business.footer
-  # location:
-  #   blocks:
-  #     - id: <main>
-  #       template: |
-  #         <div>
-  #           <h1>Location</h1>
-  #           <p>This is a location page</p>
-  #           <a href="/brochure/123">Back to business</a>
-  #         </div>
+# engine: lodash
+
+# pages:
+#   business:
+#     config:
+#       colors:
+#         base-100: oklch(95% 0 0)
+#       dark_colors:
+#         base-100: oklch(21.15% .012 254.09)
+#     blocks:
+#       - id: business.header
+#       - id: <main>
+#         blocks:
+#           - id: testing
+#           - id: <template>
+#         template: |
+#           <div>
+#             <h1>Business</h1>
+#             <p>This is a business page</p>
+#             <a href="/brochure/${business.id}/${business.locations[0].id}">${business.locations[0].name}</a>
+#           </div>
+#       - id: business.footer
+#   location:
+#     blocks:
+#       - id: <main>
+#         template: |
+#           <div>
+#             <h1>Location</h1>
+#             <p>This is a location page</p>
+#             <a href="/brochure/${business.id}">Back to business</a>
+#           </div>
 
 # blocks:
 #   testing:

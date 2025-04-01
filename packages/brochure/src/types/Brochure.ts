@@ -25,10 +25,13 @@ export interface BrochurePage extends BrochureBlock {
 
 export interface Brochure {
   version: string;
-  meta: BrochureMeta;
+  engine?: string;
+  meta?: BrochureMeta;
 
   config?: BrochureConfig;
   settings?: BrochureSettings;
+
+  data?: Record<string, unknown>;
 
   pages?: Record<string, BrochurePage>;
   blocks?: Record<string, BrochureBlock>;

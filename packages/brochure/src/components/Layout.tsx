@@ -1,18 +1,16 @@
 import { PropsWithChildren } from "react";
-import type { Brochure, BrochureBlock } from "../types";
+import type { Brochure } from "../types";
 import { BrochureProvider } from "./BrochureProvider";
 
 interface Props {
   brochure: Brochure;
   pageId: string;
-  page?: BrochureBlock;
 }
 
 export function Layout({
   children,
   brochure,
   pageId,
-  page,
 }: PropsWithChildren<Props>) {
   return (
     <BrochureProvider brochure={brochure}>

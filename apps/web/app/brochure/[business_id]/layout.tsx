@@ -3,8 +3,20 @@ import { PropsWithChildren } from "react";
 import { DefaultFooter } from "./DefaultFooter";
 import { DefaultHeader } from "./DefaultHeader";
 import { DefaultLayout } from "./DefaultLayout";
+import loadBusiness from "./load";
 
-export default async function BrochureLayout({ children }: PropsWithChildren) {
+interface Props {
+  params: Promise<{ business_id: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}
+
+export default async function BrochureLayout({
+  children,
+  ...props
+}: PropsWithChildren<Props>) {
+  const params = await props.params;
+  const business = await loadBusiness(params.business_id);
+
   return (
     <Layout
       pageId="business"
@@ -13,6 +25,7 @@ export default async function BrochureLayout({ children }: PropsWithChildren) {
         "business.header": DefaultHeader,
         "business.footer": DefaultFooter,
       }}
+      data={{ business }}
     >
       {children}
     </Layout>

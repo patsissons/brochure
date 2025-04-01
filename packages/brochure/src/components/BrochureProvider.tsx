@@ -1,14 +1,18 @@
 "use client";
 
 import type { Brochure } from "@repo/brochure/types";
-import { createContext, useContext, type PropsWithChildren } from "react";
+import { createContext, PropsWithChildren, useContext } from "react";
 
 const BrochureContext = createContext<Brochure | null>(null);
+
+interface Props {
+  brochure: Brochure;
+}
 
 export function BrochureProvider({
   children,
   brochure,
-}: PropsWithChildren<{ brochure: Brochure }>) {
+}: PropsWithChildren<Props>) {
   return (
     <>
       <BrochureContext.Provider value={brochure}>

@@ -4,10 +4,18 @@ import { load } from "@repo/brochure/load";
 import { readFile } from "fs/promises";
 import { cache } from "react";
 
-async function loadBrochure() {
+async function loadBrochure(data?: Record<string, unknown>) {
   const res = await readFile("./data/brochure.yaml");
-  const data = res.toString();
-  return load(data);
+  const yaml = res.toString();
+  const brochure = load(yaml);
+
+  return {
+    ...brochure,
+    data: {
+      ...brochure.data,
+      ...data,
+    },
+  };
 }
 
 export default cache(loadBrochure);

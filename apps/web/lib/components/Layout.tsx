@@ -6,18 +6,20 @@ import { Block } from "./Block";
 interface Props {
   pageId: string;
   defaultBlocks?: ComponentPropsWithoutRef<typeof Block>["defaultBlocks"];
+  data?: Record<string, unknown>;
 }
 
 export default async function Layout({
   children,
   pageId,
   defaultBlocks,
+  data,
 }: PropsWithChildren<Props>) {
-  const brochure = await loadBrochure();
+  const brochure = await loadBrochure(data);
   const page = brochure.pages?.[pageId];
 
   return (
-    <BrochureLayout brochure={brochure} pageId={pageId} page={page}>
+    <BrochureLayout brochure={brochure} pageId={pageId}>
       <Block
         id={pageId}
         brochure={brochure}

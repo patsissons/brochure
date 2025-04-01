@@ -7,14 +7,16 @@ import { Block } from "./Block";
 interface Props {
   pageId: string;
   defaultBlocks?: ComponentPropsWithoutRef<typeof Block>["defaultBlocks"];
+  data?: Record<string, unknown>;
 }
 
 export default async function Page({
   children,
   pageId,
   defaultBlocks,
+  data,
 }: PropsWithChildren<Props>) {
-  const brochure = await loadBrochure();
+  const brochure = await loadBrochure(data);
   const page = brochure.pages?.[pageId];
   const block = page?.blocks?.find((block) => block.id === MAIN_BLOCK_ID);
 

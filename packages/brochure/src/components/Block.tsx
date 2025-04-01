@@ -4,6 +4,7 @@ import {
   type PropsWithChildren,
 } from "react";
 import { MAIN_BLOCK_ID, TEMPLATE_BLOCK_ID } from "../constants";
+import { render } from "../render";
 import type { Brochure, BrochureBlock } from "../types";
 import { BlockStyle } from "./BlockStyle";
 
@@ -86,11 +87,12 @@ export function Block({
     if (block.id === TEMPLATE_BLOCK_ID) {
       if (block.template != null) {
         debugBlock("TEMPLATE", block);
+        const __html = render(block.template, brochure, brochure.engine);
         return (
           <section
             key={block.id}
             data-block-id={blockId}
-            dangerouslySetInnerHTML={{ __html: block.template }}
+            dangerouslySetInnerHTML={{ __html }}
           />
         );
       }
