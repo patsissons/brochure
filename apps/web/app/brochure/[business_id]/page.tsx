@@ -15,9 +15,11 @@ export async function generateMetadata(
   _parent: ResolvingMetadata
 ): Promise<Metadata> {
   const brochure = await loadBrochure();
+  const page = brochure.pages?.business;
 
   return {
     ...brochure.meta,
+    ...page?.meta,
   };
 }
 

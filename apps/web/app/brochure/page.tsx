@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 export default function Brochure() {
   return (
     <div>
-      <a href="/brochure/default">Default Business</a>
+      <Link href="/brochure/default">Default Business</Link>
     </div>
   );
 }

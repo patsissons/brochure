@@ -5,7 +5,6 @@ meta:
 
 settings:
   debugging: true
-
 # config:
 #   colors:
 #     primary: oklch(45% .24 277.023)
@@ -40,6 +39,8 @@ settings:
 
 # pages:
 #   business:
+#     meta:
+#       title: Test Business Page
 #     config:
 #       colors:
 #         base-100: oklch(95% 0 0)
