@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function DefaultHeader() {
+export function DefaultHeader() {
   return (
     <header className="sticky top-0 backdrop-blur-sm z-10 w-full h-16 bg-base-100/80 border-b border-base-content/50">
       <div className="container mx-auto w-full h-full">

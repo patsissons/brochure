@@ -11,7 +11,7 @@ export function Main({ children, pageId, page }: PropsWithChildren<Props>) {
   return (
     <>
       <BlockStyle blockId={pageId} block={page} type="page" />
-      <main style={{ flex: 1 }} data-block-id={blockId}>
+      <main style={{ display: "flex", flex: 1 }} data-block-id={blockId}>
         {children}
       </main>
     </>

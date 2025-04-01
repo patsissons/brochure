@@ -21,6 +21,7 @@ export default async function Page({
   return (
     <Main pageId={pageId} page={page}>
       <Block
+        id={MAIN_BLOCK_ID}
         brochure={brochure}
         block={block && { ...block, contextId: page?.id }}
         defaultBlocks={defaultBlocks}

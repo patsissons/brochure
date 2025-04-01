@@ -10,21 +10,28 @@ import { BlockStyle } from "./BlockStyle";
 type BrochureRenderBlock = BrochureBlock & { contextId?: string };
 
 interface Props {
+  id: string;
   brochure: Brochure;
   block?: BrochureRenderBlock;
-  defaultBlocks?: Record<string, ComponentType>;
+  defaultBlocks?: Record<string, ComponentType<PropsWithChildren>>;
   type?: ComponentPropsWithoutRef<typeof BlockStyle>["type"];
   noStyle?: boolean;
 }
 
 export function Block({
+  id,
   children,
   brochure,
   block,
   defaultBlocks,
   noStyle,
 }: PropsWithChildren<Props>) {
-  if (!block) return null;
+  if (!block) {
+    const DefaultBlock = defaultBlocks?.[id];
+    if (!DefaultBlock) return null;
+
+    return <DefaultBlock>{children}</DefaultBlock>;
+  }
 
   return (
     <>
@@ -52,6 +59,7 @@ export function Block({
           return (
             <Block
               key={childBlock.id}
+              id={childBlock.id}
               brochure={brochure}
               block={{
                 id: TEMPLATE_BLOCK_ID,
@@ -66,6 +74,7 @@ export function Block({
         return (
           <Block
             key={childBlock.id}
+            id={childBlock.id}
             brochure={brochure}
             block={childBlock}
             defaultBlocks={defaultBlocks}
@@ -95,6 +104,7 @@ export function Block({
       if (shared) {
         return (
           <Block
+            id={block.id}
             brochure={brochure}
             block={{ ...shared, contextId: "blocks" }}
             defaultBlocks={defaultBlocks}
@@ -105,13 +115,14 @@ export function Block({
       const DefaultBlock = defaultBlocks?.[block.id];
       if (DefaultBlock) {
         debugBlock("DEFAULT", block);
-        return <DefaultBlock key={blockId} />;
+        return <DefaultBlock key={blockId}>{children}</DefaultBlock>;
       }
     }
 
     if (!block.blocks || block.blocks.length === 0) {
       return (
         <Block
+          id={TEMPLATE_BLOCK_ID}
           brochure={brochure}
           block={{
             id: TEMPLATE_BLOCK_ID,
@@ -125,7 +136,7 @@ export function Block({
 
     function debugBlock(
       action: "CHILDREN" | "DEFAULT" | "MAIN" | "RENDER" | "TEMPLATE",
-      block?: BrochureRenderBlock
+      _block?: BrochureRenderBlock
     ) {
       if (!brochure.settings?.debugging) return;
 

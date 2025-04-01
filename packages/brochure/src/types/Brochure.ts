@@ -14,14 +14,22 @@ export interface BrochureBlock {
   template?: string;
 }
 
+export interface BrochureMeta {
+  title?: string;
+  description?: string;
+}
+
+export interface BrochurePage extends BrochureBlock {
+  meta: BrochureMeta;
+}
+
 export interface Brochure {
   version: string;
-  name?: string;
-  description?: string;
+  meta: BrochureMeta;
 
   config?: BrochureConfig;
   settings?: BrochureSettings;
 
-  pages?: Record<string, BrochureBlock>;
+  pages?: Record<string, BrochurePage>;
   blocks?: Record<string, BrochureBlock>;
 }

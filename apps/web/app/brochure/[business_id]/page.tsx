@@ -1,5 +1,14 @@
 import Page from "@/lib/components/Page";
+import { MAIN_BLOCK_ID } from "@repo/brochure/constants";
+import { DefaultPage } from "./DefaultPage";
 
 export default async function Brochure() {
-  return <Page pageId="business" />;
+  return (
+    <Page
+      pageId="business"
+      defaultBlocks={{
+        [MAIN_BLOCK_ID]: DefaultPage,
+      }}
+    />
+  );
 }

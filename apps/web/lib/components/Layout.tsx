@@ -19,6 +19,7 @@ export default async function Layout({
   return (
     <BrochureLayout brochure={brochure} pageId={pageId} page={page}>
       <Block
+        id={pageId}
         brochure={brochure}
         block={page}
         defaultBlocks={defaultBlocks}
