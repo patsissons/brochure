@@ -18,11 +18,11 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
-  apps/web:
+  apps/nextjs:
     dependencies:
-      '@repo/brochure':
+      '@brochure/engine':
         specifier: workspace:*
-        version: link:../../packages/brochure
+        version: link:../../packages/engine
       next:
         specifier: ^15.2.1
         version: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -36,10 +36,10 @@ importers:
         specifier: ^0.0.1
         version: 0.0.1
     devDependencies:
-      '@repo/eslint-config':
+      '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@repo/typescript-config':
+      '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
       '@tailwindcss/postcss':
@@ -67,7 +67,7 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
-  packages/brochure:
+  packages/engine:
     dependencies:
       react:
         specifier: ^19.0.0
@@ -76,16 +76,16 @@ importers:
         specifier: ^2.7.1
         version: 2.7.1
     devDependencies:
-      '@repo/brochure-html':
+      '@brochure/engine-html':
         specifier: workspace:*
-        version: link:../brochure-html
-      '@repo/brochure-lodash':
+        version: link:../engine-html
+      '@brochure/engine-lodash':
         specifier: workspace:*
-        version: link:../brochure-lodash
-      '@repo/eslint-config':
+        version: link:../engine-lodash
+      '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/typescript-config':
+      '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@turbo/gen':
@@ -104,12 +104,12 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
-  packages/brochure-html:
+  packages/engine-html:
     devDependencies:
-      '@repo/eslint-config':
+      '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/typescript-config':
+      '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@turbo/gen':
@@ -118,9 +118,6 @@ importers:
       '@types/node':
         specifier: ^22.13.10
         version: 22.13.10
-      '@types/react':
-        specifier: 19.0.10
-        version: 19.0.10
       eslint:
         specifier: ^9.23.0
         version: 9.23.0(jiti@2.4.2)
@@ -128,16 +125,16 @@ importers:
         specifier: 5.8.2
         version: 5.8.2
 
-  packages/brochure-lodash:
+  packages/engine-lodash:
     dependencies:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
     devDependencies:
-      '@repo/eslint-config':
+      '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@repo/typescript-config':
+      '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@turbo/gen':
@@ -149,9 +146,6 @@ importers:
       '@types/node':
         specifier: ^22.13.10
         version: 22.13.10
-      '@types/react':
-        specifier: 19.0.10
-        version: 19.0.10
       eslint:
         specifier: ^9.23.0
         version: 9.23.0(jiti@2.4.2)
@@ -194,6 +188,37 @@ importers:
       typescript-eslint:
         specifier: ^8.27.0
         version: 8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
+
+  packages/react:
+    dependencies:
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+    devDependencies:
+      '@brochure/engine':
+        specifier: workspace:*
+        version: link:../engine
+      '@brochure/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@brochure/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@turbo/gen':
+        specifier: ^2.4.4
+        version: 2.4.4(@types/node@22.13.10)(typescript@5.8.2)
+      '@types/node':
+        specifier: ^22.13.10
+        version: 22.13.10
+      '@types/react':
+        specifier: 19.0.10
+        version: 19.0.10
+      eslint:
+        specifier: ^9.23.0
+        version: 9.23.0(jiti@2.4.2)
+      typescript:
+        specifier: 5.8.2
+        version: 5.8.2
 
   packages/typescript-config: {}
 
@@ -648,11 +673,6 @@ packages:
   acorn-walk@8.3.4:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
     engines: {node: '>=0.4.0'}
-
-  acorn@8.14.0:
-    resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
 
   acorn@8.14.1:
     resolution: {integrity: sha512-OvQ/2pUDKmgfCg++xsTX1wGxfTaszcHVcTctW4UJB4hibJx2HXxxO5UmVgyjMa+ZDsiaf5wWLXYpRWMmBI0QHg==}
@@ -2750,8 +2770,6 @@ snapshots:
     dependencies:
       acorn: 8.14.1
 
-  acorn@8.14.0: {}
-
   acorn@8.14.1: {}
 
   agent-base@7.1.3: {}
@@ -4527,7 +4545,7 @@ snapshots:
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
       '@types/node': 22.13.10
-      acorn: 8.14.0
+      acorn: 8.14.1
       acorn-walk: 8.3.4
       arg: 4.1.3
       create-require: 1.1.1
