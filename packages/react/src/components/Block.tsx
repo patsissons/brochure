@@ -1,6 +1,6 @@
 import { Block as BrochureBlock } from "@brochure/engine/components/Block";
 import { ComponentPropsWithoutRef, PropsWithChildren } from "react";
-import { Diagnostics } from "./blocks/Diagnostics";
+import { Diagnostics } from "./blocks/Diagnostics.js";
 
 export const defaultBlocks = {
   diagnostics: Diagnostics,

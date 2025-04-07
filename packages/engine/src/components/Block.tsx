@@ -3,10 +3,10 @@ import {
   type ComponentType,
   type PropsWithChildren,
 } from "react";
-import { MAIN_BLOCK_ID, TEMPLATE_BLOCK_ID } from "../constants";
-import { render } from "../render";
-import type { Brochure, BrochureBlock } from "../types";
-import { BlockStyle } from "./BlockStyle";
+import { MAIN_BLOCK_ID, TEMPLATE_BLOCK_ID } from "../constants.js";
+import { render } from "../render.js";
+import type { Brochure, BrochureBlock } from "../types/Brochure.js";
+import { BlockStyle } from "./BlockStyle.js";
 
 type BrochureRenderBlock = BrochureBlock & { contextId?: string };
 

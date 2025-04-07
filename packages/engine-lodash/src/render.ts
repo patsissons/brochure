@@ -1,5 +1,5 @@
-import lodashTemplate from "lodash/template";
-import type { HtmlRenderContext } from "./types";
+import lodashTemplate from "lodash/template.js";
+import type { HtmlRenderContext } from "./types/Render.js";
 
 export function renderLodash(template: string, _context: HtmlRenderContext) {
   console.log("renderLodash", template, _context.data);

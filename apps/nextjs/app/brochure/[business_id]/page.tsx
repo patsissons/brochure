@@ -1,6 +1,6 @@
-import Page from "@/lib/components/Page";
 import loadBrochure from "@/lib/load";
 import { MAIN_BLOCK_ID } from "@brochure/engine/constants";
+import { Page } from "@brochure/react/components/Page";
 import { Metadata, ResolvingMetadata } from "next";
 import { DefaultPage } from "./DefaultPage";
 import loadBusiness from "./load";
@@ -34,6 +34,7 @@ export default async function Brochure(props: Props) {
         [MAIN_BLOCK_ID]: DefaultPage,
       }}
       data={{ business }}
+      loadBrochure={loadBrochure}
     />
   );
 }

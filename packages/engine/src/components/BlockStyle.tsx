@@ -1,4 +1,4 @@
-import type { BrochureBlock } from "../types";
+import type { BrochureBlock } from "../types/Brochure.js";
 
 interface Props {
   blockId: string;

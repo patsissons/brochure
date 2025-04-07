@@ -1,4 +1,5 @@
-import Layout from "@/lib/components/Layout";
+import loadBrochure from "@/lib/load";
+import { Layout } from "@brochure/react/components/Layout";
 import { PropsWithChildren } from "react";
 import { DefaultFooter } from "./DefaultFooter";
 import { DefaultHeader } from "./DefaultHeader";
@@ -7,7 +8,7 @@ import loadBusiness from "./load";
 
 interface Props {
   params: Promise<{ business_id: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  // searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export default async function BrochureLayout({
@@ -26,6 +27,7 @@ export default async function BrochureLayout({
         "business.footer": DefaultFooter,
       }}
       data={{ business }}
+      loadBrochure={loadBrochure}
     >
       {children}
     </Layout>

@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import type { BrochureBlock } from "../types";
-import { BlockStyle } from "./BlockStyle";
+import type { BrochureBlock } from "../types/Brochure.js";
+import { BlockStyle } from "./BlockStyle.js";
 interface Props {
   pageId: string;
   page?: BrochureBlock;

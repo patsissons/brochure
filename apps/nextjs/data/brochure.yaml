@@ -51,6 +51,7 @@ settings:
 #       - id: <main>
 #         blocks:
 #           - id: testing
+#           # - id: diagnostics
 #           - id: <template>
 #         template: |
 #           <div>

@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
-import type { Brochure } from "../types";
-import { BrochureProvider } from "./BrochureProvider";
+import type { Brochure } from "../types/Brochure.js";
+import { BrochureProvider } from "./BrochureProvider.js";
 
 interface Props {
   brochure: Brochure;

@@ -39,6 +39,9 @@ importers:
       '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
+      '@brochure/react':
+        specifier: workspace:*
+        version: link:../../packages/react
       '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config

@@ -1,6 +1,6 @@
 import { renderHtml } from "@brochure/engine-html/render";
 import { renderLodash } from "@brochure/engine-lodash/render";
-import { Brochure } from "./types";
+import { Brochure } from "./types/Brochure.js";
 
 export function render(template: string, brochure: Brochure, engine = "html") {
   console.log("render", template, brochure.data);

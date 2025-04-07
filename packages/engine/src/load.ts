@@ -1,5 +1,5 @@
 import yaml from "yaml";
-import type { Brochure, BrochureBlock } from "./types";
+import type { Brochure, BrochureBlock } from "./types/Brochure.js";
 
 export function load(config: string): Brochure {
   if (config.startsWith("{")) {
