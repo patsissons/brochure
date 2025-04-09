@@ -1,37 +1,36 @@
-import { Main } from '@brochure/engine/components/Main'
+import { BrochureEngineMain } from '@brochure/engine/components/BrochureEngineMain'
 import { MAIN_BLOCK_ID } from '@brochure/engine/constants'
 import { Brochure } from '@brochure/engine/types'
 import { ComponentPropsWithoutRef, PropsWithChildren } from 'react'
-import { Block } from './Block.js'
+import { BrochureBlock } from './BrochureBlock.js'
 
 interface Props {
+  brochure: Brochure
   pageId: string
-  defaultBlocks?: ComponentPropsWithoutRef<typeof Block>['defaultBlocks']
-  data?: Record<string, unknown>
-  loadBrochure: (data?: Record<string, unknown>) => Promise<Brochure>
+  defaultBlocks?: ComponentPropsWithoutRef<
+    typeof BrochureBlock
+  >['defaultBlocks']
 }
 
-export async function Page({
+export async function BrochurePage({
   children,
+  brochure,
   pageId,
   defaultBlocks,
-  data,
-  loadBrochure,
 }: PropsWithChildren<Props>) {
-  const brochure = await loadBrochure(data)
   const page = brochure.pages?.[pageId]
   const block = page?.blocks?.find((block) => block.id === MAIN_BLOCK_ID)
 
   return (
-    <Main pageId={pageId} page={page}>
-      <Block
+    <BrochureEngineMain pageId={pageId} page={page}>
+      <BrochureBlock
         id={MAIN_BLOCK_ID}
         brochure={brochure}
         block={block && { ...block, contextId: page?.id }}
         defaultBlocks={defaultBlocks}
       >
         {children}
-      </Block>
-    </Main>
+      </BrochureBlock>
+    </BrochureEngineMain>
   )
 }

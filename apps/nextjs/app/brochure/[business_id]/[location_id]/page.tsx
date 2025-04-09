@@ -1,27 +1,28 @@
-import loadBrochure from '@/lib/load'
-import { MAIN_BLOCK_ID } from '@brochure/engine/constants'
-import { Page } from '@brochure/ui/components/Page'
-import loadBusiness from '../load'
-import { DefaultPage } from './DefaultPage'
-import loadLocation from './load'
+import { BrochureLocationPage } from '@/lib/brochure/location/BrochureLocationPage'
+import { notFound } from 'next/navigation'
+import { loadLocationData } from './load'
+
 interface Props {
   params: Promise<{ business_id: string; location_id: string }>
   searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 export default async function Brochure(props: Props) {
-  const params = await props.params
-  const business = await loadBusiness(params.business_id)
-  const location = await loadLocation(params.location_id)
+  const { business_id, location_id } = await props.params
+  const { location, brochure } = await loadLocationData(
+    business_id,
+    location_id,
+  )
+
+  if (!location) return notFound()
+
+  if (brochure) {
+    return <BrochureLocationPage brochure={brochure} />
+  }
 
   return (
-    <Page
-      pageId="location"
-      defaultBlocks={{
-        [MAIN_BLOCK_ID]: DefaultPage,
-      }}
-      data={{ business, location }}
-      loadBrochure={loadBrochure}
-    />
+    <main style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+      fallback location page
+    </main>
   )
 }

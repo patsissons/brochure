@@ -1,9 +1,7 @@
-import loadBrochure from '@/lib/load'
-import { MAIN_BLOCK_ID } from '@brochure/engine/constants'
-import { Page } from '@brochure/ui/components/Page'
+import { BrochureBusinessPage } from '@/lib/brochure/business/BrochureBusinessPage'
 import { Metadata, ResolvingMetadata } from 'next'
-import { DefaultPage } from './DefaultPage'
-import loadBusiness from './load'
+import { notFound } from 'next/navigation'
+import { loadBusinessData } from './load'
 
 interface Props {
   params: Promise<{ business_id: string }>
@@ -11,10 +9,13 @@ interface Props {
 }
 
 export async function generateMetadata(
-  _props: Props,
+  props: Props,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const brochure = await loadBrochure()
+  const { business_id } = await props.params
+  const { brochure } = await loadBusinessData(business_id)
+  if (!brochure) return {}
+
   const page = brochure.pages?.business
 
   return {
@@ -24,17 +25,18 @@ export async function generateMetadata(
 }
 
 export default async function Brochure(props: Props) {
-  const params = await props.params
-  const business = await loadBusiness(params.business_id)
+  const { business_id } = await props.params
+  const { business, brochure } = await loadBusinessData(business_id)
+
+  if (!business) return notFound()
+
+  if (brochure) {
+    return <BrochureBusinessPage brochure={brochure} />
+  }
 
   return (
-    <Page
-      pageId="business"
-      defaultBlocks={{
-        [MAIN_BLOCK_ID]: DefaultPage,
-      }}
-      data={{ business }}
-      loadBrochure={loadBrochure}
-    />
+    <main style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+      fallback business page
+    </main>
   )
 }

@@ -1,35 +1,43 @@
-import loadBrochure from '@/lib/load'
-import { Layout } from '@brochure/ui/components/Layout'
+import { BrochureBusinessLayout } from '@/lib/brochure/business/BrochureBusinessLayout'
+import { notFound } from 'next/navigation'
 import { PropsWithChildren } from 'react'
-import { DefaultFooter } from './DefaultFooter'
-import { DefaultHeader } from './DefaultHeader'
-import { DefaultLayout } from './DefaultLayout'
-import loadBusiness from './load'
+import { loadBusinessData } from './load'
+import { BusinessLayoutProviders } from './providers'
 
 interface Props {
   params: Promise<{ business_id: string }>
-  // searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
-export default async function BrochureLayout({
+export default async function BusinessLayout({
   children,
   ...props
 }: PropsWithChildren<Props>) {
-  const params = await props.params
-  const business = await loadBusiness(params.business_id)
+  const { business_id } = await props.params
+  const { business, brochure } = await loadBusinessData(business_id)
+
+  if (!business) return notFound()
+
+  if (brochure) {
+    return (
+      <BusinessLayoutProviders business={business}>
+        <BrochureBusinessLayout brochure={brochure}>
+          {children}
+        </BrochureBusinessLayout>
+      </BusinessLayoutProviders>
+    )
+  }
 
   return (
-    <Layout
-      pageId="business"
-      defaultBlocks={{
-        business: DefaultLayout,
-        'business.header': DefaultHeader,
-        'business.footer': DefaultFooter,
-      }}
-      data={{ business }}
-      loadBrochure={loadBrochure}
-    >
-      {children}
-    </Layout>
+    <BusinessLayoutProviders business={business}>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100dvh',
+        }}
+      >
+        {children}
+      </div>
+    </BusinessLayoutProviders>
   )
 }

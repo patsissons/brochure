@@ -14,12 +14,13 @@ interface Props {
   id: string
   brochure: Brochure
   block?: BrochureRenderBlock
-  defaultBlocks?: Record<string, ComponentType<PropsWithChildren>>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  defaultBlocks?: Record<string, ComponentType<PropsWithChildren<any>>>
   type?: ComponentPropsWithoutRef<typeof BlockStyle>['type']
   noStyle?: boolean
 }
 
-export function Block({
+export function BrochureEngineBlock({
   id,
   children,
   brochure,
@@ -31,7 +32,9 @@ export function Block({
     const DefaultBlock = defaultBlocks?.[id]
     if (!DefaultBlock) return null
 
-    return <DefaultBlock>{children}</DefaultBlock>
+    console.log(`→ renderBlock NOBLOCK ${id}`)
+
+    return <DefaultBlock {...brochure.data}>{children}</DefaultBlock>
   }
 
   return (
@@ -58,7 +61,7 @@ export function Block({
           childBlock.template == null
         ) {
           return (
-            <Block
+            <BrochureEngineBlock
               key={childBlock.id}
               id={childBlock.id}
               brochure={brochure}
@@ -73,7 +76,7 @@ export function Block({
         }
 
         return (
-          <Block
+          <BrochureEngineBlock
             key={childBlock.id}
             id={childBlock.id}
             brochure={brochure}
@@ -105,7 +108,7 @@ export function Block({
       const shared = brochure.blocks?.[block.id]
       if (shared) {
         return (
-          <Block
+          <BrochureEngineBlock
             id={block.id}
             brochure={brochure}
             block={{ ...shared, contextId: 'blocks' }}
@@ -117,13 +120,17 @@ export function Block({
       const DefaultBlock = defaultBlocks?.[block.id]
       if (DefaultBlock) {
         debugBlock('DEFAULT', block)
-        return <DefaultBlock key={blockId}>{children}</DefaultBlock>
+        return (
+          <DefaultBlock key={blockId} {...brochure.data}>
+            {children}
+          </DefaultBlock>
+        )
       }
     }
 
     if (!block.blocks || block.blocks.length === 0) {
       return (
-        <Block
+        <BrochureEngineBlock
           id={TEMPLATE_BLOCK_ID}
           brochure={brochure}
           block={{

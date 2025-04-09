@@ -7,13 +7,13 @@ interface Props {
   pageId: string
 }
 
-export function Layout({
+export function BrochureEngineLayout({
   children,
   brochure,
   pageId,
 }: PropsWithChildren<Props>) {
   return (
-    <BrochureProvider brochure={brochure}>
+    <BrochureProvider value={brochure}>
       <div
         style={{
           display: 'flex',

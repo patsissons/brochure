@@ -6,7 +6,11 @@ interface Props {
   page?: BrochureBlock
 }
 
-export function Main({ children, pageId, page }: PropsWithChildren<Props>) {
+export function BrochureEngineMain({
+  children,
+  pageId,
+  page,
+}: PropsWithChildren<Props>) {
   const blockId = `${pageId}.<main>`
   return (
     <>

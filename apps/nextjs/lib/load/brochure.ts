@@ -4,10 +4,12 @@ import { load } from '@brochure/engine/load'
 import { readFile } from 'fs/promises'
 import { cache } from 'react'
 
-async function loadBrochure(data?: Record<string, unknown>) {
+async function loader(data?: Record<string, unknown>) {
   const res = await readFile('./data/brochure.yaml')
   const yaml = res.toString()
   const brochure = load(yaml)
+
+  // if (brochure.version) return
 
   return {
     ...brochure,
@@ -18,4 +20,4 @@ async function loadBrochure(data?: Record<string, unknown>) {
   }
 }
 
-export default cache(loadBrochure)
+export const loadBrochure = cache(loader)

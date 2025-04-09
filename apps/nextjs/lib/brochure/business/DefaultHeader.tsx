@@ -1,6 +1,11 @@
+import { Business } from '@brochure/ui/types/Business'
 import Image from 'next/image'
 
-export function DefaultHeader() {
+interface Props {
+  business: Business
+}
+
+export function DefaultHeader({ business }: Props) {
   return (
     <header className="sticky top-0 backdrop-blur-sm z-10 w-full h-16 bg-base-100/80 border-b border-base-content/50">
       <div className="container mx-auto w-full h-full">
@@ -12,7 +17,7 @@ export function DefaultHeader() {
             width={112}
             height={112}
           />
-          <div className="justify-self-center">name</div>
+          <div className="justify-self-center">{business?.name}</div>
           <div className="justify-self-end">menu</div>
         </div>
       </div>

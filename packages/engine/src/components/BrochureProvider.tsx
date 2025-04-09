@@ -5,20 +5,14 @@ import { createContext, PropsWithChildren, useContext } from 'react'
 
 const BrochureContext = createContext<Brochure | null>(null)
 
-interface Props {
-  brochure: Brochure
-}
-
 export function BrochureProvider({
   children,
-  brochure,
-}: PropsWithChildren<Props>) {
+  value,
+}: PropsWithChildren<{ value: Brochure }>) {
   return (
-    <>
-      <BrochureContext.Provider value={brochure}>
-        {children}
-      </BrochureContext.Provider>
-    </>
+    <BrochureContext.Provider value={value}>
+      {children}
+    </BrochureContext.Provider>
   )
 }
 
