@@ -39,12 +39,12 @@ importers:
       '@brochure/eslint-config':
         specifier: workspace:*
         version: link:../../packages/eslint-config
-      '@brochure/react':
-        specifier: workspace:*
-        version: link:../../packages/react
       '@brochure/typescript-config':
         specifier: workspace:*
         version: link:../../packages/typescript-config
+      '@brochure/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@tailwindcss/postcss':
         specifier: ^4.0.17
         version: 4.0.17
@@ -192,7 +192,9 @@ importers:
         specifier: ^8.27.0
         version: 8.27.0(eslint@9.23.0(jiti@2.4.2))(typescript@5.8.2)
 
-  packages/react:
+  packages/typescript-config: {}
+
+  packages/ui:
     dependencies:
       react:
         specifier: ^19.0.0
@@ -222,8 +224,6 @@ importers:
       typescript:
         specifier: 5.8.2
         version: 5.8.2
-
-  packages/typescript-config: {}
 
 packages:
 

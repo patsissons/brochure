@@ -1,5 +1,5 @@
 import loadBrochure from "@/lib/load";
-import { Layout } from "@brochure/react/components/Layout";
+import { Layout } from "@brochure/ui/components/Layout";
 import { PropsWithChildren } from "react";
 import { DefaultFooter } from "./DefaultFooter";
 import { DefaultHeader } from "./DefaultHeader";

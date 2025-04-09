@@ -1,6 +1,6 @@
 import loadBrochure from "@/lib/load";
 import { MAIN_BLOCK_ID } from "@brochure/engine/constants";
-import { Page } from "@brochure/react/components/Page";
+import { Page } from "@brochure/ui/components/Page";
 import { Metadata, ResolvingMetadata } from "next";
 import { DefaultPage } from "./DefaultPage";
 import loadBusiness from "./load";

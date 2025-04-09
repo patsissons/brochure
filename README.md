@@ -23,13 +23,13 @@ This Turborepo includes the following packages/apps:
 ### Apps and Packages
 
 - `@brochure/nextjs`: a [Next.js](https://nextjs.org/) app implementation
-- `@brochure/remix`: a [Remix](https://remix.run/) app implementation
+- ~`@brochure/remix`: a [Remix](https://remix.run/) app implementation~
 - `@brochure/engine`: the core rendering engine
 - `@brochure/engine-html`: a HTML rendering engine, performs no variable interpolation
 - `@brochure/engine-lodash`: a lodash rendering engine that uses the [lodash template interpolation](https://lodash.com/docs/3.10.1#template)
 - `@brochure/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@brochure/react`: a React component library shared by both `nextjs` and `remix` applications
 - `@brochure/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- `@brochure/ui`: a React component library shared by both `nextjs` and `remix` applications
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
