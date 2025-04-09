@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 export function DefaultHeader() {
   return (
@@ -17,5 +17,5 @@ export function DefaultHeader() {
         </div>
       </div>
     </header>
-  );
+  )
 }

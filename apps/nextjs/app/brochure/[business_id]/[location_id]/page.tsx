@@ -1,18 +1,18 @@
-import loadBrochure from "@/lib/load";
-import { MAIN_BLOCK_ID } from "@brochure/engine/constants";
-import { Page } from "@brochure/ui/components/Page";
-import loadBusiness from "../load";
-import { DefaultPage } from "./DefaultPage";
-import loadLocation from "./load";
+import loadBrochure from '@/lib/load'
+import { MAIN_BLOCK_ID } from '@brochure/engine/constants'
+import { Page } from '@brochure/ui/components/Page'
+import loadBusiness from '../load'
+import { DefaultPage } from './DefaultPage'
+import loadLocation from './load'
 interface Props {
-  params: Promise<{ business_id: string; location_id: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
+  params: Promise<{ business_id: string; location_id: string }>
+  searchParams: Promise<Record<string, string | string[] | undefined>>
 }
 
 export default async function Brochure(props: Props) {
-  const params = await props.params;
-  const business = await loadBusiness(params.business_id);
-  const location = await loadLocation(params.location_id);
+  const params = await props.params
+  const business = await loadBusiness(params.business_id)
+  const location = await loadLocation(params.location_id)
 
   return (
     <Page
@@ -23,5 +23,5 @@ export default async function Brochure(props: Props) {
       data={{ business, location }}
       loadBrochure={loadBrochure}
     />
-  );
+  )
 }

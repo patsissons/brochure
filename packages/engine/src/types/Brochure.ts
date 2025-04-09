@@ -1,38 +1,38 @@
 export interface BrochureSettings {
-  debugging?: boolean;
+  debugging?: boolean
 }
 
 export interface BrochureConfig {
-  colors?: Record<string, string>;
-  dark_colors?: Record<string, string>;
+  colors?: Record<string, string>
+  dark_colors?: Record<string, string>
 }
 
 export interface BrochureBlock {
-  id: string;
-  config?: BrochureConfig;
-  blocks?: BrochureBlock[];
-  template?: string;
+  id: string
+  config?: BrochureConfig
+  blocks?: BrochureBlock[]
+  template?: string
 }
 
 export interface BrochureMeta {
-  title?: string;
-  description?: string;
+  title?: string
+  description?: string
 }
 
 export interface BrochurePage extends BrochureBlock {
-  meta: BrochureMeta;
+  meta: BrochureMeta
 }
 
 export interface Brochure {
-  version: string;
-  engine?: string;
-  meta?: BrochureMeta;
+  version: string
+  engine?: string
+  meta?: BrochureMeta
 
-  config?: BrochureConfig;
-  settings?: BrochureSettings;
+  config?: BrochureConfig
+  settings?: BrochureSettings
 
-  data?: Record<string, unknown>;
+  data?: Record<string, unknown>
 
-  pages?: Record<string, BrochurePage>;
-  blocks?: Record<string, BrochureBlock>;
+  pages?: Record<string, BrochurePage>
+  blocks?: Record<string, BrochureBlock>
 }

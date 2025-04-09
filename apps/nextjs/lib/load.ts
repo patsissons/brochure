@@ -1,13 +1,13 @@
-import "server-only";
+import 'server-only'
 
-import { load } from "@brochure/engine/load";
-import { readFile } from "fs/promises";
-import { cache } from "react";
+import { load } from '@brochure/engine/load'
+import { readFile } from 'fs/promises'
+import { cache } from 'react'
 
 async function loadBrochure(data?: Record<string, unknown>) {
-  const res = await readFile("./data/brochure.yaml");
-  const yaml = res.toString();
-  const brochure = load(yaml);
+  const res = await readFile('./data/brochure.yaml')
+  const yaml = res.toString()
+  const brochure = load(yaml)
 
   return {
     ...brochure,
@@ -15,7 +15,7 @@ async function loadBrochure(data?: Record<string, unknown>) {
       ...brochure.data,
       ...data,
     },
-  };
+  }
 }
 
-export default cache(loadBrochure);
+export default cache(loadBrochure)

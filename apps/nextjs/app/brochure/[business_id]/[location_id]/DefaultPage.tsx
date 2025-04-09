@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 export function DefaultPage() {
   return (
@@ -10,5 +10,5 @@ export function DefaultPage() {
         Back to business
       </Link>
     </div>
-  );
+  )
 }

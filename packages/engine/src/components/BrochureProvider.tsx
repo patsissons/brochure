@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import type { Brochure } from "@brochure/engine/types";
-import { createContext, PropsWithChildren, useContext } from "react";
+import type { Brochure } from '@brochure/engine/types'
+import { createContext, PropsWithChildren, useContext } from 'react'
 
-const BrochureContext = createContext<Brochure | null>(null);
+const BrochureContext = createContext<Brochure | null>(null)
 
 interface Props {
-  brochure: Brochure;
+  brochure: Brochure
 }
 
 export function BrochureProvider({
@@ -19,14 +19,14 @@ export function BrochureProvider({
         {children}
       </BrochureContext.Provider>
     </>
-  );
+  )
 }
 
-export function useBrochure(): Brochure;
-export function useBrochure(throwIfMissing: false): Brochure | null;
+export function useBrochure(): Brochure
+export function useBrochure(throwIfMissing: false): Brochure | null
 export function useBrochure(throwIfMissing = true) {
-  const brochure = useContext(BrochureContext);
-  if (!brochure && throwIfMissing) throw new Error("Brochure not loaded");
+  const brochure = useContext(BrochureContext)
+  if (!brochure && throwIfMissing) throw new Error('Brochure not loaded')
 
-  return brochure;
+  return brochure
 }

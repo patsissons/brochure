@@ -1,10 +1,10 @@
-import { Block as BrochureBlock } from "@brochure/engine/components/Block";
-import { ComponentPropsWithoutRef, PropsWithChildren } from "react";
-import { Diagnostics } from "./blocks/Diagnostics.js";
+import { Block as BrochureBlock } from '@brochure/engine/components/Block'
+import { ComponentPropsWithoutRef, PropsWithChildren } from 'react'
+import { Diagnostics } from './blocks/Diagnostics.js'
 
 export const defaultBlocks = {
   diagnostics: Diagnostics,
-};
+}
 
 export function Block({
   children,
@@ -20,5 +20,5 @@ export function Block({
     >
       {children}
     </BrochureBlock>
-  );
+  )
 }

@@ -5,5 +5,5 @@ export function DefaultFooter() {
         <p>Powered by Boulevard</p>
       </div>
     </footer>
-  );
+  )
 }

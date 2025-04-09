@@ -1,10 +1,10 @@
-import { cache } from "react";
+import { cache } from 'react'
 
 async function loadLocation(locationId: string) {
   return Promise.resolve({
     id: locationId,
-    name: "Test Location",
-  });
+    name: 'Test Location',
+  })
 }
 
-export default cache(loadLocation);
+export default cache(loadLocation)

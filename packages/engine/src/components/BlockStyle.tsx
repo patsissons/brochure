@@ -1,13 +1,13 @@
-import type { BrochureBlock } from "../types/Brochure.js";
+import type { BrochureBlock } from '../types/Brochure.js'
 
 interface Props {
-  blockId: string;
-  block?: BrochureBlock;
-  type?: "page" | "block";
+  blockId: string
+  block?: BrochureBlock
+  type?: 'page' | 'block'
 }
 
-export function BlockStyle({ blockId, block, type = "block" }: Props) {
-  if (!block) return null;
+export function BlockStyle({ blockId, block, type = 'block' }: Props) {
+  if (!block) return null
 
   return (
     <>
@@ -18,7 +18,7 @@ export function BlockStyle({ blockId, block, type = "block" }: Props) {
 /* ${blockId} (${type}) */
 ${Object.entries(block.config.colors)
   .map(([key, value]) => `  --color-${key}: ${value};`)
-  .join("\n")}
+  .join('\n')}
 }
           `}
         </style>
@@ -31,12 +31,12 @@ ${Object.entries(block.config.colors)
   :root {
 ${Object.entries(block.config.dark_colors)
   .map(([key, value]) => `    --color-${key}: ${value};`)
-  .join("\n")}
+  .join('\n')}
   }
 }
           `}
         </style>
       )}
     </>
-  );
+  )
 }

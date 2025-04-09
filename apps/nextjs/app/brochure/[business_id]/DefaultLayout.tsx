@@ -1,6 +1,6 @@
-import { PropsWithChildren } from "react";
-import { DefaultFooter } from "./DefaultFooter";
-import { DefaultHeader } from "./DefaultHeader";
+import { PropsWithChildren } from 'react'
+import { DefaultFooter } from './DefaultFooter'
+import { DefaultHeader } from './DefaultHeader'
 
 export function DefaultLayout({ children }: PropsWithChildren) {
   return (
@@ -9,5 +9,5 @@ export function DefaultLayout({ children }: PropsWithChildren) {
       {children}
       <DefaultFooter />
     </>
-  );
+  )
 }

@@ -1,3 +1,3 @@
 export interface HtmlRenderContext {
-  data?: Record<string, unknown>;
+  data?: Record<string, unknown>
 }
